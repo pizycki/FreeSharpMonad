@@ -18,6 +18,13 @@ type IUserRepository =
     abstract member Create : user:CreateUserRequest -> UserId
     abstract member Get : userId:UserId -> UserEntity
 
+// Start impl of FreeMonad
+
+type UserRepositoryInstruction = 
+    | 
+    |
+
+
 [<EntryPoint>]
 let main argv =
     printfn "%A" argv
