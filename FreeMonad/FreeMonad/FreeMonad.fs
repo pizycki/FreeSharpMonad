@@ -55,6 +55,12 @@ let Select1Row (userId:UserId) = {
     Name = "Pawel Izycki"
 }
 
+// Interpreter
+let rec interpret = function
+| Pure x -> x
+| Free (Create (x, next)) -> x |> InsertUserRow |> next |> interpret
+| Free (Get (x, next)) -> x |> Select1Row |> next |> interpret
+
 [<EntryPoint>]
 let main argv =
     printfn "%A" argv
