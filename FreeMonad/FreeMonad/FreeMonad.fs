@@ -21,8 +21,8 @@ type IUserRepository =
 // Start impl of FreeMonad
 
 type UserRepositoryInstruction<'a> = 
-    | Create of (CreateUserRequest * UserId)
-    | Get of (UserId * UserEntity)
+| Create of (CreateUserRequest * (UserId -> 'a))
+| Get of (UserId * (UserEntity -> 'a))
 
 
 [<EntryPoint>]
