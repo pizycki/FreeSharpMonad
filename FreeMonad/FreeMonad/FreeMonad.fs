@@ -32,6 +32,9 @@ type UserRepositoryProgram<'a> =
 | Free of UserRepositoryInstruction<UserRepositoryProgram<'a>>
 | Pure of 'a
 
+let rec bind f = function 
+| Free x -> x |> mapI (bind f) |> Free
+| Pure x -> f x
 
 [<EntryPoint>]
 let main argv =
