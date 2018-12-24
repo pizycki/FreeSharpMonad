@@ -28,7 +28,9 @@ let private mapI f = function
     | Create (x, next) -> Create(x, next >> f)
     | Get (x, next) -> Get(x, next >> f)
 
-
+type UserRepositoryProgram<'a> =
+|
+|
 
 
 [<EntryPoint>]
