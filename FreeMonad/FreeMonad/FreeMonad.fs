@@ -63,5 +63,14 @@ let rec interpret = function
 
 [<EntryPoint>]
 let main argv =
-    printfn "%A" argv
+    let userRepo = UserRepoBuilder ()
+    let createAndGetUser = userRepo {
+        let! userId = createUser {Name="Pawel"}
+        return! getUser userId
+    }    
+    
+    let user = interpret createAndGetUser
+
+    printfn "User %A" user |> ignore
+
     0 // return an integer exit code
