@@ -2,9 +2,8 @@ module FreeMonad
 open System
 
 
-type UserId = 
-    UserId of Guid
-
+type UserId = UserId of int
+    
 type CreateUserRequest = {
     Name: string
 }
@@ -49,6 +48,12 @@ let createUser user = Free (Create (user, Pure))
 let getUser userId = Free (Get (userId, Pure))
 
 
+// Implementations 
+let InsertUserRow (req:CreateUserRequest) = UserId 42
+let Select1Row (userId:UserId) = {
+    Id = UserId 42;
+    Name = "Pawel Izycki"
+}
 
 [<EntryPoint>]
 let main argv =
