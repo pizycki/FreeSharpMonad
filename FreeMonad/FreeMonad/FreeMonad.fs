@@ -20,7 +20,7 @@ type IUserRepository =
 
 // Start impl of FreeMonad
 
-type UserRepositoryInstruction = 
+type UserRepositoryInstruction<'a> = 
     | 
     |
 
