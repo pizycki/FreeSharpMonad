@@ -29,7 +29,7 @@ let private mapI f = function
     | Get (x, next) -> Get(x, next >> f)
 
 type UserRepositoryProgram<'a> =
-| Free
+| Free of UserRepositoryInstruction<UserRepositoryProgram<'a>>
 | Pure
 
 
