@@ -24,6 +24,12 @@ type UserRepositoryInstruction<'a> =
 | Create of (CreateUserRequest * (UserId -> 'a))
 | Get of (UserId * (UserEntity -> 'a))
 
+let private mapI f = function 
+    | Create (x, next) -> Create(x, next >> f)
+    | Get (x, next) -> Get(x, next >> f)
+
+
+
 
 [<EntryPoint>]
 let main argv =
