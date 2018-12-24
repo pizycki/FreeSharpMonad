@@ -30,7 +30,7 @@ let private mapI f = function
 
 type UserRepositoryProgram<'a> =
 | Free of UserRepositoryInstruction<UserRepositoryProgram<'a>>
-| Pure
+| Pure of 'a
 
 
 [<EntryPoint>]
