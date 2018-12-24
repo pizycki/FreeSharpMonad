@@ -36,6 +36,16 @@ let rec bind f = function
 | Free x -> x |> mapI (bind f) |> Free
 | Pure x -> f x
 
+type UserRepoBuilder () =
+    member this.Bind (x, f) = bind f x
+    member this.Return x = Pure x
+    member this.ReturnFrom x = x
+    member this.Zero () = Pure ()
+
+    // TODO Combine, For, TryFinally
+
+
+
 [<EntryPoint>]
 let main argv =
     printfn "%A" argv
