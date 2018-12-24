@@ -44,6 +44,10 @@ type UserRepoBuilder () =
 
     // TODO Combine, For, TryFinally
 
+// Factories
+let createUser user = Free (Create (user, Pure))
+let getUser userId = Free (Get (userId, Pure))
+
 
 
 [<EntryPoint>]
